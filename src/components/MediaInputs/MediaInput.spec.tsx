@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/experimental-ct-react';
 
-import MainComposer from './MainComposer';
-i;
+import MainComposer from '../MainComposer/MainComposer';
 
 test.describe('MainComposer', () => {
   test.describe('MediaInputs', () => {
