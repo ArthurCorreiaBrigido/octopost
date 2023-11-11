@@ -1,4 +1,3 @@
-import ComposerEditor from '~components/ComposerEditor/ComposerEditor';
 import MainComposer from '~components/MainComposer/MainComposer';
 import SavBar from '~components/SavBar/SavBar';
 
@@ -17,10 +16,8 @@ const Home = () => {
             <Sidebar />
           </div>
           <div className={scss.gridInput}>
-            <ComposerEditor />
             <MainComposer />
           </div>
-
           <div className={scss.gridTabs} />
         </div>
         <SavBar />
