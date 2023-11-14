@@ -2,12 +2,6 @@ import { test, expect } from '@playwright/experimental-ct-react';
 
 import MainComposer from '../MainComposer/MainComposer';
 
-jest.mock('nanoid', () => {
-  return {
-    nanoid: jest.fn(() => 'sua-string-especifica-aqui'),
-  };
-});
-
 test.describe('MainComposer', () => {
   test.describe('MediaInputs', () => {
     test('upload the image', async ({ mount }) => {

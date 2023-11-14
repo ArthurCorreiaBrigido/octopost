@@ -1,68 +1,18 @@
-import { test, expect } from '@playwright/experimental-ct-react';
+import { render, screen } from '@testing-library/react';
 
-import MainComposer from '../MainComposer/MainComposer';
+import MediaInputs from './MediaInput';
 
-test.describe('MainComposer', () => {
-  test.describe('MediaInputs', () => {
-    test('upload the image', async ({ mount }) => {
-      const component = await mount(<MainComposer />);
+jest.mock('nanoid', () => {
+  return {
+    nanoid: jest.fn(() => 'sua-string-especifica-aqui'),
+  };
+});
 
-      await component
-        .getByTestId('imageInput')
-        .setInputFiles('src/assets/logo.png');
+describe('MediaInputs', () => {
+  it('renders the  media inputs', () => {
+    render(<MediaInputs />);
 
-      await expect(
-        component.getByAltText('uploaded image logo.png')
-      ).toBeVisible();
-    });
-
-    test('upload two images', async ({ mount }) => {
-      const component = await mount(<MainComposer />);
-
-      await component
-        .getByTestId('imageInput')
-        .setInputFiles(['src/assets/logo.png', 'src/assets/imagetest.jpg']);
-
-      await expect(
-        component.getByAltText('uploaded image logo.png')
-      ).toBeVisible();
-      await expect(
-        component.getByAltText('uploaded image imagetest.jpg')
-      ).toBeVisible();
-    });
-
-    test.describe('when the file is diferent from image or video', () => {
-      test('doesnt select the file', async ({ mount }) => {
-        const mediaSelected: string | null = null;
-
-        const component = await mount(<MainComposer />);
-
-        await component
-          .getByTestId('imageInput')
-          .setInputFiles('public/robots.txt');
-
-        await expect(mediaSelected).toBeNull();
-      });
-    });
-
-    test.describe('when add img and click on remove button', () => {
-      test('remove image', async ({ mount }) => {
-        const component = await mount(<MainComposer />);
-
-        await component
-          .getByTestId('imageInput')
-          .setInputFiles('src/assets/logo.png');
-
-        await expect(
-          component.getByAltText('uploaded image logo.png')
-        ).toBeVisible();
-
-        await component.getByRole('button', { name: 'X' }).click();
-
-        await expect(
-          component.getByAltText('uploaded image logo.png')
-        ).not.toBeVisible();
-      });
-    });
+    const manyMediaComponent = screen.getAllByTestId('manyMediaInputs');
+    expect(manyMediaComponent.length).toBeGreaterThan(0);
   });
 });
