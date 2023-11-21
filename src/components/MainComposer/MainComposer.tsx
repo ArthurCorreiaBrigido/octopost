@@ -25,7 +25,7 @@ function MainComposer() {
             <h2>content-bot-top</h2>
           </div>
           <div className={scss.contentBotBot}>
-            <div className={scss.contentBotBotInputMedia}>
+            <div className={scss.mainComposerInputMedia}>
               <MediaInputs />
             </div>
             <h2>content-bot-bot</h2>

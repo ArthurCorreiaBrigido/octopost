@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import CharacterLimitMainText from '../CharacterLimitMainText/CharacterLimitMainText'; // Importe o componente CharacterLimitMainText aqui
-import CustomTextArea from '../TextArea/TextArea'; // Importe o componente CustomTextArea aqui
+import CharacterLimitMainText from '../CharacterLimitMainText/CharacterLimitMainText';
+import CustomTextArea from '../TextArea/TextArea';
 
 import scss from './ComposerEditor.module.scss';
 
